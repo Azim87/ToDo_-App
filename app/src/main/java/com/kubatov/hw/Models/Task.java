@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Task {
 
+    public String title;
+    public String description;
+    public Boolean isDone;
+    public Date creationData;
+    public Date endData;
 
-    String title;
-    String description;
-    Boolean isDone;
-    Date creationData;
-    Date endData;
 
 
 }
