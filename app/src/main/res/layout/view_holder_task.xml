@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="100dp"
+    >
 
     <TextView
         android:id="@+id/vh_task_title"
@@ -11,13 +12,19 @@
         android:layout_height="wrap_content"
         android:text="@string/default_task_title"
         android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="40sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <TextView
         android:id="@+id/vh_tast_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/default_task_desc"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/vh_task_title" />
 
 </android.support.constraint.ConstraintLayout>

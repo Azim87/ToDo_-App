@@ -10,6 +10,9 @@ public class Task {
     public Date creationData;
     public Date endData;
 
-
+    public Task(String title, String description){
+        this.title = title;
+        this.description = description;
+    }
 
 }
