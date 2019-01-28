@@ -8,13 +8,15 @@ public class Task {
     public String title;
     public String description;
     public Boolean isDone;
-    public Date creationDate;
-    public Date endDate;
+    public String creationDate;
+    public String endDate;
 
-    public Task(int id, String title, String description){
+    public Task(String creationDate, int id, String title, String description, String endDate){
+        this.creationDate = creationDate;
         this.id = id;
         this.title = title;
         this.description = description;
+        this.endDate = endDate;
     }
 
 }

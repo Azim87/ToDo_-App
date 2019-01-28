@@ -23,9 +23,14 @@ public class TaskDetails extends AppCompatActivity {
 
         String taskTitle = intent.getStringExtra("task_title");
         String taskDescription = intent.getStringExtra("task_description");
+        String creationData = intent.getStringExtra("create_data");
+        String endData = intent.getStringExtra("end_data");
+
 
         tvTitle.setText(taskTitle);
         tvDescription.setText(taskDescription);
+        tvCreationDate.setText(creationData);
+        tvEndDate.setText(endData);
 
     }
 

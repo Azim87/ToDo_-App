@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
     }
     void initTasks(){
         tasks = new ArrayList<>();
-        tasks.add(new Task(0,"task1", "very important task"));
-        tasks.add(new Task(1,"task2", "not very important task"));
-        tasks.add(new Task(2,"task3", "very very important task"));
+        tasks.add(new Task("01-01-2019",0,"task1", "very important task","02-01-2019"));
+        tasks.add(new Task("02-02-2020",1,"task2", "not very important task","03-02-2020"));
+        tasks.add(new Task("03-01-2021",2,"task3", "very very important task","04-01-2021"));
 
     }
 
@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
 
         intent.putExtra("task_title", task.title);
         intent.putExtra("task_description", task.description);
+        intent.putExtra("create_data", task.creationDate);
+        intent.putExtra("end_data", task.endDate);
+
 
         startActivity(intent);
     }
