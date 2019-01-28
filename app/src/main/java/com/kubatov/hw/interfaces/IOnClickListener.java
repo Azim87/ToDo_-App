@@ -1,5 +1,5 @@
 package com.kubatov.hw.interfaces;
 
 public interface IOnClickListener {
-    void onClick();
+    void onClick(int taskId);
 }

@@ -12,6 +12,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     TextView tvTitle;
     TextView tvDescription;
     IOnClickListener listener;
+    int taskId = -1;
 
     public TaskViewHolder(View v, final IOnClickListener listener){
         super(v);
@@ -22,13 +23,14 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick();
+                listener.onClick(taskId);
             }
         });
 
     }
 
     public void onBind(Task task){
+        taskId = task.id;
         tvTitle.setText(task.title);
         tvDescription.setText(task.description);
     }

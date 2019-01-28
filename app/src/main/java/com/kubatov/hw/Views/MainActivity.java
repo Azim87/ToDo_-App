@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
     }
     void initTasks(){
         tasks = new ArrayList<>();
-        tasks.add(new Task("task1", "very important task"));
-        tasks.add(new Task("task2", "not very important task"));
-        tasks.add(new Task("task3", "very very important task"));
+        tasks.add(new Task(0,"task1", "very important task"));
+        tasks.add(new Task(1,"task2", "not very important task"));
+        tasks.add(new Task(2,"task3", "very very important task"));
 
     }
 
@@ -49,9 +49,29 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
     }
 
     @Override
-    public void onClick() {
-        Log.d("blya", "onClick");
+    public void onClick(int taskId) {
+
+        Task task = null;
+
+        for (int i=0; i<tasks.size(); i++){
+            if (tasks.get(i).id == taskId){
+                task = tasks.get(i);
+                break;
+            }else {
+                Log.d("blya", "not found");
+
+            }
+
+
+        }
+        if (task ==null){
+            return;
+        }
         Intent intent = new Intent(this, TaskDetails.class);
+
+        intent.putExtra("task_title", task.title);
+        intent.putExtra("task_description", task.description);
+
         startActivity(intent);
     }
 }

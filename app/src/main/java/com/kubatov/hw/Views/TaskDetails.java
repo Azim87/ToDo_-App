@@ -1,5 +1,6 @@
 package com.kubatov.hw.Views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -17,6 +18,14 @@ public class TaskDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_details);
         initViews();
+
+        Intent intent = getIntent();
+
+        String taskTitle = intent.getStringExtra("task_title");
+        String taskDescription = intent.getStringExtra("task_description");
+
+        tvTitle.setText(taskTitle);
+        tvDescription.setText(taskDescription);
 
     }
 
