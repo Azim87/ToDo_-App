@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.kubatov.hw.Models.Task;
 import com.kubatov.hw.R;
 
 public class TaskDetails extends AppCompatActivity {
@@ -20,21 +21,16 @@ public class TaskDetails extends AppCompatActivity {
         initViews();
 
         Intent intent = getIntent();
+        Task task = (Task) intent.getSerializableExtra("task");
 
-        String taskTitle = intent.getStringExtra("task_title");
-        String taskDescription = intent.getStringExtra("task_description");
-        String creationData = intent.getStringExtra("create_data");
-        String endData = intent.getStringExtra("end_data");
-
-
-        tvTitle.setText(taskTitle);
-        tvDescription.setText(taskDescription);
-        tvCreationDate.setText(creationData);
-        tvEndDate.setText(endData);
+        tvTitle.setText(task.title);
+        tvDescription.setText(task.description);
+        tvCreationDate.setText(task.strCreationDate());
+        tvEndDate.setText(task.strEndDate());
 
     }
 
-    void initViews(){
+    void initViews() {
         tvTitle = findViewById(R.id.task_Title);
         tvDescription = findViewById(R.id.task_Description);
         tvCreationDate = findViewById(R.id.creation_date);

@@ -12,7 +12,10 @@ import com.kubatov.hw.Models.Task;
 import com.kubatov.hw.R;
 import com.kubatov.hw.interfaces.IOnClickListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements IOnClickListener {
@@ -27,15 +30,20 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         initTasks();
         initRecycler();
 
     }
-    void initTasks(){
+    void initTasks() {
         tasks = new ArrayList<>();
-        tasks.add(new Task("01-01-2019",0,"task1", "very important task","02-01-2019"));
-        tasks.add(new Task("02-02-2020",1,"task2", "not very important task","03-02-2020"));
-        tasks.add(new Task("03-01-2021",2,"task3", "very very important task","04-01-2021"));
+
+            tasks.add(new Task(new Date(),
+                    0, "task1", "very important task",new Date(2019, 02,13), false ));
+            tasks.add(new Task(new Date(),
+                    1,"task2", "not very important task", new Date(2019, 03,13), false));
+            tasks.add(new Task(new Date(),
+                    2,"task3", "very very important task", new Date(2019,04,13), false));
 
     }
 
@@ -61,20 +69,15 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
                 Log.d("blya", "not found");
 
             }
-
-
         }
         if (task ==null){
             return;
         }
         Intent intent = new Intent(this, TaskDetails.class);
-
-        intent.putExtra("task_title", task.title);
-        intent.putExtra("task_description", task.description);
-        intent.putExtra("create_data", task.creationDate);
-        intent.putExtra("end_data", task.endDate);
-
+        intent.putExtra("task", task);
 
         startActivity(intent);
     }
+
+
 }
