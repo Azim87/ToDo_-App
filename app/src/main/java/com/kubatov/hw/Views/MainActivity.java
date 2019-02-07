@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.kubatov.hw.Adapters.TasksAdapter;
 import com.kubatov.hw.Models.Task;
 import com.kubatov.hw.R;
 import com.kubatov.hw.interfaces.IOnClickListener;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
 
     RecyclerView mainRecycker;
     TasksAdapter tasksAdapter;
+    Button addNewTaskBtn;
 
     List<Task> tasks;
 
@@ -30,9 +31,10 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         initTasks();
         initRecycler();
+        initButton();
+
 
     }
     void initTasks() {
@@ -54,6 +56,17 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
 
         mainRecycker.setLayoutManager(LayoutManager);
         mainRecycker.setAdapter(tasksAdapter);
+    }
+
+    void initButton(){
+        addNewTaskBtn = findViewById(R.id.add_new_task);
+        addNewTaskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TaskCreationActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
     }
 
     @Override
@@ -79,5 +92,17 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
         startActivity(intent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            if(resultCode == RESULT_OK){
+                Task task = (Task) data.getSerializableExtra("task");
+                tasks.add(task);
+                tasksAdapter.notifyDataSetChanged();
+            }
 
+        }
+
+    }
 }

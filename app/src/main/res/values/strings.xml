@@ -4,6 +4,9 @@
     <string name="default_task_description">Description</string>
     <string name="default_creation_date">2019-01-28</string>
     <string name="default_end_date">2019-01-28</string>
+    <string name="new_task">New Task</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="done">Done</string>
 
 
 </resources>
